@@ -32,7 +32,7 @@
 ******************************************************************************/
 // \cond
 // An interval before WDT will expire
-#if defined(AT91SAM7X256)
+#if defined(AT91SAM7X512)
 
   typedef enum
   {
@@ -112,7 +112,7 @@ void HAL_StartWdt(HAL_WdtInterval_t interval);
 /*******************************************************************//**
 \brief Stops the watch dog timer
 
-Note that the function is empty for AT91SAM7X256, because WDT on AT91SAM7X256
+Note that the function is empty for AT91SAM7X512, because WDT on AT91SAM7X512
 cannot be stopped for hardware reasons.
 ***********************************************************************/
 void HAL_StopWdt(void);

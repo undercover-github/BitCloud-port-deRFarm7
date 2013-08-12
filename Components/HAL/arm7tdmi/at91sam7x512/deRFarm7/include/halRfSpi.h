@@ -34,7 +34,7 @@
 ******************************************************************************/
 // serial clock baud rate
 // speed - spi frequency in Hz
-#if defined(PLATFORM_SAM7X_EK_RF2XX) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
+#if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
   #define SPI_FREQUENCY  6000000ul
 #elif defined(PLATFORM_ZIGBIT_LAN) || defined(PLATFORM_ZIGBIT_TURBO)
   #ifdef RF

@@ -357,8 +357,8 @@ ifeq ($(PLATFORM), PLATFORM_ZIGBIT_LAN)                     ###### ZIGBIT_LAN pl
   endif  
 endif # PLATFORM_ZIGBIT_LAN
 
-ifeq ($(PLATFORM), PLATFORM_SAM7X_EK_RF2XX)     ##### PLATFORM_SAM7X_EK_RF2XX platform ####
-  HAL = AT91SAM7X256
+ifeq ($(PLATFORM), PLATFORM_deRFarm7)     ##### PLATFORM_deRFarm7 platform ####
+  HAL = AT91SAM7X512
   HAL_CLOCK_SOURCE = CRYSTAL_18d432MHz
   HAL_FREQUENCY = HAL_48MHz
   
@@ -386,7 +386,7 @@ ifeq ($(PLATFORM), PLATFORM_SAM7X_EK_RF2XX)     ##### PLATFORM_SAM7X_EK_RF2XX pl
   ifeq ($(USB), TRUE)
     PFLAGS += -DHAL_USE_USB
   endif  
-endif # PLATFORM_SAM7X_EK_RF2XX
+endif # PLATFORM_deRFarm7
 
 ifeq ($(PLATFORM), PLATFORM_CUSTOM_1)             ########### PLATFORM_CUSTOM_1 platform ####
   HAL = AT91SAM7X256
@@ -710,6 +710,9 @@ endif
 ifeq ($(HAL), AT91SAM7X256)
   CPU = arm7tdmi
 endif
+ifeq ($(HAL), AT91SAM7X512)
+  CPU = arm7tdmi
+endif
 ifeq ($(HAL), AT91SAM3S4C)
   CPU = cortex-m3
 endif  
@@ -751,7 +754,7 @@ endif
 ifndef COMPILER_TYPE
   $(error ERROR in file  Makerules: $(COMPILER_TYPE) - unknow type of compiler) 
 endif
-ifneq (, $(findstring $(HAL), AT91SAM7X256 AT91SAM3S4C))
+ifneq (, $(findstring $(HAL), AT91SAM7X256 AT91SAM7X512 AT91SAM3S4C))
   ifeq ($(COMPILER_TYPE), IAR)
     CROSS_COMPILER = arm
   endif
@@ -802,9 +805,9 @@ ifeq ($(PLATFORM), PLATFORM_ZIGBIT_LAN)
   HAL_HWD_COMMON_PATH = $(HAL_PATH)/arm7tdmi/at91sam7x256/common
   HAL_MAC_API_PATH    = $(HAL_PATH)/arm7tdmi/at91sam7x256/zigBitArm
 endif
-ifeq ($(PLATFORM), PLATFORM_SAM7X_EK_RF2XX)
-  HAL_HWD_COMMON_PATH = $(HAL_PATH)/arm7tdmi/at91sam7x256/common
-  HAL_MAC_API_PATH    = $(HAL_PATH)/arm7tdmi/at91sam7x256/atmlEvalKit
+ifeq ($(PLATFORM), PLATFORM_deRFarm7)
+  HAL_HWD_COMMON_PATH = $(HAL_PATH)/arm7tdmi/at91sam7x512/common
+  HAL_MAC_API_PATH    = $(HAL_PATH)/arm7tdmi/at91sam7x512/deRFarm7
 endif
 ifeq ($(PLATFORM), PLATFORM_CUSTOM_1)
   HAL_HWD_COMMON_PATH = $(HAL_PATH)/arm7tdmi/at91sam7x256/common
@@ -963,7 +966,7 @@ endif
 ifeq ($(PLATFORM), PLATFORM_ZIGBIT_LAN)
   HAL_LIB_NAME_PLATFORM = _ZigBitLan
 endif
-ifeq ($(PLATFORM), PLATFORM_SAM7X_EK_RF2XX)
+ifeq ($(PLATFORM), PLATFORM_deRFarm7)
   HAL_LIB_NAME_PLATFORM = _Sam7xEkRf2xx
 endif
 ifeq ($(PLATFORM), PLATFORM_CUSTOM_1)
@@ -1045,6 +1048,9 @@ ifeq ($(HAL), ATMEGA256RFR2)
 endif
 ifeq ($(HAL), AT91SAM7X256)
   LIB_NAME_MICRO = _At91sam7x256
+endif
+ifeq ($(HAL), AT91SAM7X512)
+  LIB_NAME_MICRO = _At91sam7x512
 endif
 ifeq ($(HAL), AT91SAM3S4C)
   LIB_NAME_MICRO = _At91sam3s4c
@@ -1128,7 +1134,7 @@ endif
 ifeq ($(PLATFORM), PLATFORM_ZIGBIT_LAN)
   CFLAGS += -D_UART_0_HW_CONTROL_
 endif
-ifeq ($(PLATFORM), PLATFORM_SAM7X_EK_RF2XX)
+ifeq ($(PLATFORM), PLATFORM_deRFarm7)
   CFLAGS += -D_UART_0_HW_CONTROL_
 endif
 ifeq ($(PLATFORM), PLATFORM_ZIGBIT_TURBO)
@@ -1162,7 +1168,7 @@ ifeq ($(COMPILER_AND_MICRO_TYPE), GCC_AVR)
 else ifeq ($(COMPILER_AND_MICRO_TYPE), IAR_AVR)
   EXP_VERSION = IAR C/C++ Compiler V6.11.1.50453 for Atmel AVR
 else ifeq ($(COMPILER_AND_MICRO_TYPE), GCC_ARM)
-  EXP_VERSION = gcc version 4.6.2 20121016 (release) [ARM/embedded-4_6-branch revision 192487] (GNU Tools for ARM Embedded Processors)
+  EXP_VERSION = gcc version 4.7.3 (Sourcery CodeBench Lite 2013.05-23)
 else ifeq ($(COMPILER_AND_MICRO_TYPE), IAR_ARM)
   EXP_VERSION = IAR ANSI C/C++ Compiler V6.30.6.53336/W32 for ARM
 else ifeq ($(COMPILER_AND_MICRO_TYPE), IAR_AVR32)
@@ -1210,6 +1216,26 @@ endif
 ifeq ($(HAL), AT91SAM7X256)
   ifeq ($(OS), FREE_RTOS)
     FREE_RTOS_LIB=FreeRTOSat91sam7x256
+  endif
+  ifeq ($(COMPILER_TYPE), GCC)
+    ifeq ($(OS), FREE_RTOS)
+      BOOT_OBJ = $(LIBDIR)/FreertosBoot$(COMPILER_TYPE_LOWER_CASE).o
+    endif
+    ifeq ($(OS), NONE_OS)
+      BOOT_OBJ = $(LIBDIR)/FirmwareBoot$(COMPILER_TYPE_LOWER_CASE).o
+    endif
+  endif
+  ifeq ($(COMPILER_TYPE), IAR)
+    ifeq ($(OS), FREE_RTOS)
+    endif
+    ifeq ($(OS), NONE_OS)
+      BOOT_OBJ = $(LIBDIR)/FirmwareBoot$(COMPILER_TYPE_LOWER_CASE).o
+    endif
+  endif
+endif
+ifeq ($(HAL), AT91SAM7X512)
+  ifeq ($(OS), FREE_RTOS)
+    FREE_RTOS_LIB=FreeRTOSat91sam7x512
   endif
   ifeq ($(COMPILER_TYPE), GCC)
     ifeq ($(OS), FREE_RTOS)

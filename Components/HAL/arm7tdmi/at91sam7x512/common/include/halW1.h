@@ -33,7 +33,7 @@
 /******************************************************************************
                    Define(s) section
 ******************************************************************************/
-#if defined(PLATFORM_SAM7X_EK_RF2XX) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
+#if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
   #define ONE_WIRE_PORT       B
   #define BASE_ONE_WIRE_PORT  AT91C_BASE_PIOB
   #define ONE_WIRE_PIN        AT91C_PIO_PB27

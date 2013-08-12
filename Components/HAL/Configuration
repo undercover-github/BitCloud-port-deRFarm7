@@ -36,12 +36,12 @@ COMPILER_TYPE = GCC
 #-------------------------------------------------------------------------------
 # Platforms selection:
 #-------------------------------------------------------------------------------
-PLATFORM = PLATFORM_SAM7X_EK_RF2XX
+PLATFORM = PLATFORM_deRFarm7
 
 #-------------------------------------------------------------------------------
-# SAM7X_EK_RF2XX platform specific options:
+# PLATFORM_deRFarm7 platform specific options:
 #-------------------------------------------------------------------------------
-ifeq ($(PLATFORM), PLATFORM_SAM7X_EK_RF2XX)
+ifeq ($(PLATFORM), PLATFORM_deRFarm7)
   # Accessible periphery
   USART = TRUE
   #USART = FALSE
@@ -71,7 +71,7 @@ ifeq ($(PLATFORM), PLATFORM_SAM7X_EK_RF2XX)
   # Note that BitCloud uses the following HAL components
   # (all of which are also accessible to an application):
   # application timer, sleep emulator, spi
-endif # PLATFORM_SAM7X_EK_RF2XX
+endif # PLATFORM_deRFarm7
 
 #-------------------------------------------------------------------------------
 # OS selection (only for ARM):

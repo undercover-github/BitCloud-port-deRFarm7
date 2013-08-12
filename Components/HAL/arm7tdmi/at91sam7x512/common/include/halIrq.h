@@ -32,7 +32,7 @@
 /******************************************************************************
                    Define(s) section
 ******************************************************************************/
-#if defined(PLATFORM_SAM7X_EK_RF2XX) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
+#if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
   #define IRQ0   AT91C_ID_FIQ   // Valid for use
   #define IRQ1   AT91C_ID_IRQ1  // Valid for use
 #elif defined(PLATFORM_ZIGBIT_LAN) || defined(PLATFORM_ZIGBIT_TURBO)

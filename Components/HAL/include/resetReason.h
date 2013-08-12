@@ -34,7 +34,7 @@
                                Types section
  ******************************************************************************/
 /** \brief The reset reason types. */
-#if defined(AT91SAM7X256)
+#if defined(AT91SAM7X512)
   typedef enum
   {
     /** \brief VDDCORE rising */

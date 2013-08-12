@@ -25,7 +25,7 @@
 /******************************************************************************
                    Includes section
 ******************************************************************************/
-#if defined(AT91SAM7X256) || defined(AT32UC3A0512) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT32UC3A0512) || defined(AT91SAM3S4C)
   #include <inttypes.h>
 #elif defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || defined(AT90USB1287) \
    || defined(ATXMEGA128A1) || defined(ATXMEGA256A3) || defined(ATXMEGA256D3) || defined(ATMEGA128RFA1) \
@@ -33,7 +33,7 @@
   #include <halAtomic.h>
 #endif
 
-#if defined(AT91SAM7X256) || defined(AT32UC3A0512) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT32UC3A0512) || defined(AT91SAM3S4C)
 /******************************************************************************
                    Types section
 ******************************************************************************/

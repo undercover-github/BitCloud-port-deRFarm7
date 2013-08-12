@@ -143,7 +143,7 @@ void irqRfHandler(void)
 {
   //configure_dbgu();
 	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
-#if defined(PLATFORM_SAM7X_EK_RF2XX) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
+#if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
   #if defined(FREE_RTOS)
     portSAVE_CONTEXT();
   #endif
@@ -151,7 +151,7 @@ void irqRfHandler(void)
 
   phyDispatcheRfInterrupt();
 
-#if defined(PLATFORM_SAM7X_EK_RF2XX) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
+#if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
   #if defined(FREE_RTOS)
     /* End the interrupt in the AIC. */
     AT91C_BASE_AIC->AIC_EOICR = 0;

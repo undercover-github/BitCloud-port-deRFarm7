@@ -4,7 +4,7 @@ include $(HAL_PATH)/Makerules
 ######
 LIBDIR = $(STACK_LIB_PATH)
 LIB = $(LIBDIR)/lib$(HAL_LIB).a
-BUILDDIR = $(HAL_PATH)/arm7tdmi/at91sam7x256
+BUILDDIR = $(HAL_PATH)/arm7tdmi/at91sam7x512
 
 ##### PATHS FLAGS OF INCLUDES #########
 CFLAGS += -I$(HAL_PATH)/include
@@ -12,7 +12,8 @@ CFLAGS += -I$(HAL_HWD_COMMON_PATH)/include
 CFLAGS += -I$(HAL_MAC_API_PATH)/include
 CFLAGS += -I$(HAL_PATH)
 CFLAGS += -Iat91lib/
-CFLAGS += -Iat91lib/boards/derfarm7
+#CFLAGS += -Iat91lib/boards/derfarm7
+CFLAGS += -mthumb
 
 ifeq ($(COMPILER_TYPE), GCC)
   ifeq ($(OS), FREE_RTOS)
@@ -48,12 +49,6 @@ CFLAGS += -DHAL_USE_USART_CHANNEL_1
 # hw control is not used.
 CFLAGS += -DHW_CONTROL_PINS_PORT_ASSIGNMENT=USART_CHANNEL_0
 
-#Enables (or disables) reading and writing of 16- and 32- bit values from addresses that are not 16- or 32- bit aligned. 
-#By default unaligned access is disabled for all 
-#pre-ARMv6 and all ARMv6-M architectures, and enabled for all other architectures. 
-#If unaligned access is not enabled then words in packed
-#data structures will be accessed a byte at a time.  
-CFLAGS += -mno-unaligned-access
 
 #### FreeRTOS FLAGS #######
 ifeq ($(OS), FREE_RTOS)

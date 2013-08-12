@@ -99,7 +99,7 @@
 #define COMB_DEVICE_PROTOCOL    0x01
 
 // Endpoint definitions' sizes.
-#if defined(AT91SAM7X256)
+#if defined(AT91SAM7X512)
   #define SZ_CONTROL_ENDPOINT      0x08      // endpoint 0 is control pipe
 #elif defined(AT90USB1287) || defined(AT91SAM3S4C)
   #define SZ_CONTROL_ENDPOINT      0x40      // endpoint 0 is control pipe

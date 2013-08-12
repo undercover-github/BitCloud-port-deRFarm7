@@ -26,7 +26,7 @@
 #if defined(__ICCAVR__) || defined(__ICCARM__) || defined(__ICCAVR32__)
 
 // \cond
-#if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
   #include <intrinsics.h>
 #elif defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || defined(AT90USB1287) \
    || defined(ATXMEGA128A1) || defined(ATXMEGA256A3) || defined(ATXMEGA256D3) || defined(ATMEGA128RFA1) \
@@ -55,7 +55,7 @@
 #define PRAGMA(x) _Pragma(#x)
 
 // \cond
-#if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
 
   #define PROGMEM_DECLARE(x) x
   #define FLASH_VAR
@@ -141,7 +141,7 @@
 #pragma GCC poison _HI_SECURITY_ _USE_SKKE_ _AUTHENTICATION_ _ZCL_KE_CLUSTER_
 
 // \cond
-#if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
 #elif defined(X86)
 #elif defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || defined(AT90USB1287) \
    || defined(ATXMEGA128A1) || defined(ATXMEGA256A3) || defined(ATXMEGA256D3) || defined(ATMEGA128RFA1) \
@@ -158,7 +158,7 @@
 // \endcond
 
 // \cond
-#if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
 
   #define PROGMEM_DECLARE(x) x
   #define FLASH_VAR

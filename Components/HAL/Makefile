@@ -46,6 +46,10 @@ ifeq ($(HAL), AT91SAM7X256)
   TARGET=ARM7
 endif
 
+ifeq ($(HAL), AT91SAM7X512)
+  TARGET=ARM7
+endif
+
 ifeq ($(HAL), AT91SAM3S4C)
   TARGET=CORTEX
 endif

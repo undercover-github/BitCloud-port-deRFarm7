@@ -62,7 +62,7 @@ static void dfuDetach(void)
   };
   uint16_t page;
 
-#if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
   // Acknowledge the request
   sendZLP();
 #endif

@@ -20,7 +20,7 @@
  ******************************************************************************/
 
 /* Generic MII registers. */
-#ifdef PLATFORM_SAM7X_EK_RF2XX
+#ifdef PLATFORM_deRFarm7
   #define MII_BMCR            0x00        /* Basic mode control register */
   #define MII_BMSR            0x01        /* Basic mode status register  */
   #define MII_PHYSID1         0x02        /* PHYS ID 1                   */
@@ -84,7 +84,7 @@
 #define BMSR_100BASE4           0x8000  /* Can do 100mbps, 4k packets  */
 
 /* Advertisement control register. */
-#ifdef PLATFORM_SAM7X_EK_RF2XX
+#ifdef PLATFORM_deRFarm7
   #define ADVERTISE_SLCT          0x001f  /* Selector bits               */
   #define ADVERTISE_CSMA          0x0001  /* Only selector supported     */
   #define ADVERTISE_10HALF        0x0020  /* Try for 10mbps half-duplex  */
@@ -117,7 +117,7 @@
                        ADVERTISE_100HALF | ADVERTISE_100FULL)
 
 /* Link partner ability register. */
-#ifdef PLATFORM_SAM7X_EK_RF2XX
+#ifdef PLATFORM_deRFarm7
   #define LPA_SLCT                0x001f  /* Same as advertise selector  */
   #define LPA_10HALF              0x0020  /* Can do 10mbps half-duplex   */
   #define LPA_10FULL              0x0040  /* Can do 10mbps full-duplex   */
@@ -170,7 +170,7 @@
 // with manufacturer's revision number 0x0007c0c3
 #define MII_LN8700_ID     0x0007c0c0
 
-#ifdef PLATFORM_SAM7X_EK_RF2XX
+#ifdef PLATFORM_deRFarm7
   #define AT91C_PHY_ADDR        31
 #else
   #define AT91C_PHY_ADDR        16

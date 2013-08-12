@@ -103,7 +103,7 @@ static StringDescriptor_t serialNumberStringDescr = {
 /******************************************************************************
                    Implementations section
 ******************************************************************************/
-#if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
 /******************************************************************************
 send zero-length packet through control pipe
 ******************************************************************************/
@@ -125,7 +125,7 @@ void runtimeSetConfiguration(uint8_t cfgnum)
   // Set & save the desired configuration
   HAL_SetConfiguration(cfgnum);
 
-  #if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+  #if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
     // Acknowledge the request
     sendZLP();
   #endif
@@ -216,7 +216,7 @@ void runtimeRequestHandler(uint8_t *data)
       break;
     case USB_SET_ADDRESS:
         usbAddress = pRequest->wValue & 0x7F;
-        #if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+        #if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
           HAL_UsbWrite(0, 0, 0, (TransferCallback_t) HAL_SetAddress, (void *)&usbAddress);
         #elif defined(AT90USB1287)
           HAL_SetAddress((uint8_t *)&usbAddress);

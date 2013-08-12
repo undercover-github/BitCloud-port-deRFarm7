@@ -67,7 +67,7 @@ void HAL_StartWdt(HAL_WdtInterval_t interval)
 /*******************************************************************//**
 \brief Stops the Watch Dog timer
 
-Note that function is empty for AT91SAM7X256. WDT for AT91SAM7X256 is
+Note that function is empty for AT91SAM7X512. WDT for AT91SAM7X512 is
 impossible to stop.
 ***********************************************************************/
 void HAL_StopWdt(void)

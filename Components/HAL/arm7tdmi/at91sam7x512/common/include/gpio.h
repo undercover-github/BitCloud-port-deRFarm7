@@ -54,21 +54,21 @@ INLINE void  GPIO_##name##_toggle()      {if (AT91C_BASE_PIO##port->PIO_ODSR & b
 /******************************************************************************
                    Inline static functions section
 ******************************************************************************/
-#if defined(PLATFORM_SAM7X_EK_RF2XX)
-//  // USART RTS manipulation macros
-//  HAL_ASSIGN_PIN(USART_RTS, A, AT91C_PIO_PA3);
-//  // USART CTS manipulation macros
-//  HAL_ASSIGN_PIN(USART_CTS, A, AT91C_PIO_PA4);
-//  // USART DTR manipulation macros
-//  HAL_ASSIGN_PIN(USART_DTR, B, AT91C_PIO_PB25);
-//  // USART0------------------------------------
-//  // USART0 TXD manipulation macros
-//  HAL_ASSIGN_PIN(USART0_TXD, A, AT91C_PIO_PA1);
-//  // USART1------------------------------------
-//  // USART1 TXD manipulation macros
-//  HAL_ASSIGN_PIN(USART1_TXD, A, AT91C_PIO_PA6);
-//
-//#elif defined(PLATFORM_ZIGBIT_LAN) || defined(PLATFORM_ZIGBIT_TURBO)
+#if defined(PLATFORM_deRFarm7)
+// USART RTS manipulation macros
+HAL_ASSIGN_PIN(USART_RTS, A, AT91C_PIO_PA3);
+// USART CTS manipulation macros
+HAL_ASSIGN_PIN(USART_CTS, A, AT91C_PIO_PA4);
+// USART DTR manipulation macros
+HAL_ASSIGN_PIN(USART_DTR, B, AT91C_PIO_PB25);
+// USART0------------------------------------
+// USART0 TXD manipulation macros
+HAL_ASSIGN_PIN(USART0_TXD, A, AT91C_PIO_PA1);
+// USART1------------------------------------
+// USART1 TXD manipulation macros
+HAL_ASSIGN_PIN(USART1_TXD, A, AT91C_PIO_PA6);
+
+#elif defined(PLATFORM_ZIGBIT_LAN) || defined(PLATFORM_ZIGBIT_TURBO)
   // USART RTS manipulation macros
   HAL_ASSIGN_PIN(USART_RTS, A, AT91C_PIO_PA8);
   // USART CTS manipulation macros

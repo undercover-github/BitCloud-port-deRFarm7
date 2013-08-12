@@ -30,7 +30,7 @@
 /******************************************************************************
                    Define(s) section
 ******************************************************************************/
-#if defined(AT91SAM7X256)
+#if defined(AT91SAM7X512)
 /*! \brief task ID for hal task manager.  HAL_FIRST_X are free ID. */
 enum
 {
@@ -226,7 +226,7 @@ enum
 /******************************************************************************
                    External variables section
 ******************************************************************************/
-#if defined(AT91SAM7X256)
+#if defined(AT91SAM7X512)
 extern volatile uint32_t halTaskFlags;
 #elif defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || defined(AT90USB1287) \
    || defined(ATXMEGA128A1) || defined(ATXMEGA256A3) || defined(ATXMEGA256D3) || defined(ATMEGA128RFA1) \
@@ -243,7 +243,7 @@ extern volatile uint32_t halTaskFlags;
 /******************************************************************************
                    Inline static functions section
 ******************************************************************************/
-#if defined(AT91SAM7X256)
+#if defined(AT91SAM7X512)
 /**************************************************************************//**
 \brief Set task for task manager.
 

@@ -183,7 +183,7 @@ void vcpResponseSetLineCoding(void)
   vcpSetParity(response.getLineCoding.bParityType);
   vcpSetDataLength(response.getLineCoding.bDataBits);
 
-#if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
   sendZLP();
 #endif
 }
@@ -213,7 +213,7 @@ void vcpRequestHandler(uint8_t *data)
       break;
     case SET_CONTROL_LINE_STATE:
         //vcpReadDataFromSetControlLineState(pRequest->wValue); // possible in the future
-        #if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+        #if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
           sendZLP();
         #endif
       break;

@@ -31,7 +31,7 @@
 /******************************************************************************
                    Define(s) section
 ******************************************************************************/
-#if defined(PLATFORM_SAM7X_EK_RF2XX) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
+#if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
   #define IRQ0_PIO   AT91C_PIO_PA30
   #define IRQ1_PIO   AT91C_PIO_PA14
 #elif defined(PLATFORM_ZIGBIT_LAN) || defined(PLATFORM_ZIGBIT_TURBO)
@@ -45,7 +45,7 @@
 #if defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
   void fiqHandler(void);
   #define IRQ0HANDLER  fiqHandler
-#elif defined(PLATFORM_ZIGBIT_LAN) || defined(PLATFORM_ZIGBIT_TURBO) || defined(PLATFORM_SAM7X_EK_RF2XX)
+#elif defined(PLATFORM_ZIGBIT_LAN) || defined(PLATFORM_ZIGBIT_TURBO) || defined(PLATFORM_deRFarm7)
   #if defined(FREE_RTOS)
     void irq0Handler(void)  __attribute__((naked));
   #else
@@ -66,7 +66,7 @@ IrqCallback_t IrqCallbackList[HAL_NUM_IRQ_LINES] = {NULL, NULL};
 /******************************************************************************
                    Implementations section
 ******************************************************************************/
-#if defined(PLATFORM_SAM7X_EK_RF2XX) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
+#if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
 /******************************************************************************
  External fast interrupt handler
 ******************************************************************************/

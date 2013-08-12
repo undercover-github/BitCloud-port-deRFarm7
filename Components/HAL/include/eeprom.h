@@ -31,7 +31,7 @@
 /******************************************************************************
                    Define(s) section
 ******************************************************************************/
-#if defined(AT91SAM7X256)
+#if defined(AT91SAM7X512)
   #define EEPROM_DATA_MEMORY_SIZE 0x400u
 #elif defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || defined(AT90USB1287) \
    || defined(ATXMEGA256A3) || defined(ATXMEGA256D3) || defined(ATMEGA128RFA1) || defined(ATMEGA256RFR2) \

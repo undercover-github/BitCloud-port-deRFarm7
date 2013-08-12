@@ -51,7 +51,7 @@
 /** \brief numbers of possible interrupt. */
 typedef enum
 {
-#if defined(AT91SAM7X256) || defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || \
+#if defined(AT91SAM7X512) || defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || \
     defined(AT90USB1287) || defined(ATMEGA128RFA1) || defined(ATMEGA256RFR2) || defined(AT32UC3A0512)
 /** \brief number of valid interrupt for arm and avr32. */
   IRQ_0 = 0,
@@ -100,7 +100,7 @@ typedef enum
   IRQ_LIMIT
 } HAL_IrqNumber_t;
 
-#if defined(AT91SAM7X256) || defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || \
+#if defined(AT91SAM7X512) || defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || \
     defined(AT90USB1287) || defined(ATMEGA128RFA1) || defined(ATMEGA256RFR2) || defined(AT32UC3A0512)
 /** \brief interrupt activation condition. */
 typedef uint8_t HAL_IrqMode_t;

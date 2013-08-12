@@ -67,7 +67,7 @@ void halMacTimerHandler(void);
 /****************************************************************
   RF interrupt service routine.
 ****************************************************************/
-#if defined(PLATFORM_SAM7X_EK_RF2XX) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
+#if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
   #if defined(FREE_RTOS)
     void irqRfHandler(void) __attribute__((naked));
   #else

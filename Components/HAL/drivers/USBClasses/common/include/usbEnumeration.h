@@ -42,7 +42,7 @@ Parameters:
 ******************************************************************************/
 void usbBusResetAction(void);
 
-#if defined(AT91SAM7X256) || defined(AT91SAM3S4C)
+#if defined(AT91SAM7X512) || defined(AT91SAM3S4C)
 /******************************************************************************
 send zero-length packet through control pipe
 ******************************************************************************/

@@ -25,7 +25,7 @@
 /******************************************************************************
                    Includes section
 ******************************************************************************/
-#if defined(AT91SAM7X256)
+#if defined(AT91SAM7X512)
   #include <halMemSpi.h>
 #elif defined(ATMEGA1281) || defined(ATMEGA2561) || defined(ATMEGA1284) || \
       defined(AT90USB1287) || defined(ATMEGA128RFA1) || defined(ATMEGA256RFR2) || \
@@ -48,7 +48,7 @@ typedef struct
     SPI_CLOCK_MODE2 \n
     SPI_CLOCK_MODE3 \n */
   SpiClockMode_t clockMode;
-#if defined(AT91SAM7X256)
+#if defined(AT91SAM7X512)
   /** \brief parameters are valid only for arm: */
   /** \brief symbol size (bits) (set by user). Must be set: \n
     SPI_8BITS_SYMBOL  \n

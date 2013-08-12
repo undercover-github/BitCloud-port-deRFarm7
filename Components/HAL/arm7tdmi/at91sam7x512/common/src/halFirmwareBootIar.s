@@ -23,7 +23,7 @@
 ; Include your AT91 Library files
 ;------------------------------------------------------------------------------
 #define __ASSEMBLY__
-#include "AT91SAM7X256.h"
+#include "AT91SAM7X512.h"
 ;------------------------------------------------------------------------------
 
 #define TOP_OF_MEMORY    (AT91C_ISRAM + AT91C_ISRAM_SIZE)

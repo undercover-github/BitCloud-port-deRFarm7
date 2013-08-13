@@ -32,7 +32,7 @@
 #include <stddef.h>
 #include <halW1.h>
 #include <halMacIsr.h>
-#include <dbgPort.h>
+#include <logs.h>
 /******************************************************************************
                    Define(s) section
 ******************************************************************************/
@@ -183,7 +183,7 @@ void HAL_ClearRfRst(void)
 ******************************************************************************/
 void HAL_DeselectRfSpi(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
   GPIO_SPI_CS_set();
 }
 
@@ -192,7 +192,7 @@ void HAL_DeselectRfSpi(void)
 ******************************************************************************/
 void HAL_SelectRfSpi(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
   GPIO_SPI_CS_clr();
 }
 
@@ -226,6 +226,9 @@ void HAL_InitRfIrq(void)
   /* enable pio peripheral functions */
   AT91C_BASE_PIOA->PIO_ASR = IRQ_RF_NPC;
   AT91C_BASE_PIOA->PIO_PDR = IRQ_RF_NPC;
+
+  //AT91C_BASE_PIOA->PIO_ODR = IRQ_RF_NPC;
+  //AT91C_BASE_PIOA->PIO_PER = IRQ_RF_NPC;
 
   /* Enable interrupts */
   /* Disable the interrupt on the interrupt controller */

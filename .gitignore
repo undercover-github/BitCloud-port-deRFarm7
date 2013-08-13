@@ -1,3 +1,4 @@
-objs
-list
+objs/
+list/
 *.~
+*.o

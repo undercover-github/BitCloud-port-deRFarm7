@@ -238,7 +238,7 @@ uint32_t HAL_WriteByteRfSpi(uint8_t value)
 ******************************************************************************/
 void HAL_WriteDataRfSpi(uint8_t *data, uint16_t size, void (*callback)())
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
   tx_rf_callback = callback;
   AT91C_BASE_SPI1->SPI_TPR = (uint32_t)data;
   AT91C_BASE_SPI1->SPI_TCR = size;

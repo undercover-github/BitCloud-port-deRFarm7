@@ -17,8 +17,8 @@ else ifeq ($(BOARD), BOARD_MESHBEAN_LAN)
   BUILDDIR = ./MESHBEAN_LAN
 else ifeq ($(BOARD), BOARD_MESHBEAN_TURBO)
   BUILDDIR = ./MESHBEAN_TURBO
-else ifeq ($(BOARD), BOARD_SAM7X_EK)
-  BUILDDIR = ./ATML_SAM7X_EK
+else ifeq ($(BOARD), BOARD_deRFarm7)
+  BUILDDIR = ./deRFarm7
 else ifeq ($(BOARD), BOARD_SAM3S_EK)
   BUILDDIR = ./ATML_SAM3S_EK
 else ifeq ($(BOARD), BOARD_SAM3S_EK)
@@ -63,7 +63,7 @@ CFLAGS += -I$(HAL_HWD_COMMON_PATH)/include
 CFLAGS += -I$(SE_PATH)/include
 
 BSPFLAGS=$(CFLAGS) 
-ifeq ($(BOARD), BOARD_SAM7X_EK)
+ifeq ($(BOARD), BOARD_deRFarm7)
   BSPFLAGS=$(patsubst %$(ARM_MODE_THUMBS_CFLAGS),,$(CFLAGS)) $(ARM_MODE_ARM_CFLAGS)
   BSPFLAGS += -I$(FREE_RTOS_PATH)/
   BSPFLAGS += -I$(FREE_RTOS_PATH)/include
@@ -123,10 +123,9 @@ modules =                       \
        sliders                  \
        bspTaskManager           \
        fakeBSP
-else ifeq ($(BOARD), BOARD_SAM7X_EK)
+else ifeq ($(BOARD), BOARD_deRFarm7)
 modules =                       \
        leds                     \
-       joystick                 \
        bspTaskManager           \
        fakeBSP
 else ifeq ($(BOARD), BOARD_SAM3S_EK)

@@ -42,9 +42,8 @@
   #define _LEDS_
   #define _BUTTONS_
 #endif
-#ifdef BOARD_SAM7X_EK
-  //#define _LEDS_
-  //#define _JOYSTICK_
+#ifdef BOARD_deRFarm7
+  #define _LEDS_
 #endif
 #ifdef BOARD_SAM3S_EK
   #define _LEDS_

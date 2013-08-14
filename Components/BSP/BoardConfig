@@ -46,10 +46,9 @@ ifeq ($(BOARD), BOARD_MESHBEAN_LAN)
   BOARDCFLAGS += -D_BUTTONS_
 endif
 
-ifeq ($(BOARD), BOARD_SAM7X_EK)
-  BSP_LIB = BSPSam7xEk
+ifeq ($(BOARD), BOARD_deRFarm7)
+  BSP_LIB = BSPdeRFarm7
   #BOARDCFLAGS  = -D_LEDS_
-  #BOARDCFLAGS += -D_JOYSTICK_
 endif
 
 ifeq ($(BOARD), BOARD_SAM3S_EK)

@@ -29,10 +29,14 @@ Init LED control module.
 ****************************************************************/
 static void initLeds(void)
 {
-  halInitFirstLed();
-  halInitSecondLed();
-  halInitThirdLed();
-  halInitFourthLed();
+  halInitLed0();
+  halInitLed1();
+  halInitLed2();
+  halInitLed3();
+  halInitLed4();
+  halInitLed5();
+  halInitLed6();
+  halInitLed7();
 }
 
 /****************************************************************
@@ -41,10 +45,14 @@ Opens leds module to use.
 result_t BSP_OpenLeds(void)
 {
   initLeds();
-  halOffFirstLed();
-  halOffSecondLed();
-  halOffThirdLed();
-  halOffFourthLed();
+  halOffLed0();
+  halOffLed1();
+  halOffLed2();
+  halOffLed3();
+  halOffLed4();
+  halOffLed5();
+  halOffLed6();
+  halOffLed7();
   return BC_SUCCESS;
 }
 
@@ -53,10 +61,14 @@ Closes leds module.
 ****************************************************************/
 result_t BSP_CloseLeds(void)
 {
-  halUnInitFirstLed();
-  halUnInitSecondLed();
-  halUnInitThirdLed();
-  halUnInitFourthLed();
+  halUnInitLed0();
+  halUnInitLed1();
+  halUnInitLed2();
+  halUnInitLed3();
+  halUnInitLed4();
+  halUnInitLed5();
+  halUnInitLed6();
+  halUnInitLed7();
   return BC_SUCCESS;
 }
 
@@ -70,16 +82,28 @@ void BSP_OnLed(uint8_t id)
   switch(id)
   {
     case LED_FIRST:
-          halOnFirstLed();
+          halOnLed0();
          break;
     case LED_SECOND:
-          halOnSecondLed();
+          halOnLed1();
          break;
     case LED_THIRD:
-          halOnThirdLed();
+          halOnLed2();
          break;
     case LED_FOURTH:
-          halOnFourthLed();
+          halOnLed3();
+         break;
+    case LED_FIFTH:
+          halOnLed4();
+         break;
+    case LED_SIXTH:
+          halOnLed5();
+         break;
+    case LED_SEVENTH:
+          halOnLed6();
+         break;
+    case LED_EIGHTH:
+          halOnLed7();
          break;
   }
 }
@@ -94,16 +118,16 @@ void BSP_OffLed(uint8_t id)
   switch(id)
   {
     case LED_FIRST:
-          halOffFirstLed();
+          halOffLed0();
          break;
     case LED_SECOND:
-          halOffSecondLed();
+          halOffLed1();
          break;
     case LED_THIRD:
-          halOffThirdLed();
+          halOffLed2();
          break;
     case LED_FOURTH:
-          halOffFourthLed();
+          halOffLed3();
          break;
   }
 }
@@ -118,16 +142,16 @@ void BSP_ToggleLed(uint8_t id)
   switch(id)
   {
     case LED_FIRST:
-          halToggleFirstLed();
+          halToggleLed0();
          break;
     case LED_SECOND:
-          halToggleSecondLed();
+          halToggleLed1();
          break;
     case LED_THIRD:
-          halToggleThirdLed();
+          halToggleLed2();
          break;
     case LED_FOURTH:
-          halToggleFourthLed();
+          halToggleLed3();
          break;
   }
 }

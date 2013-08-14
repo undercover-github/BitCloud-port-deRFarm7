@@ -73,7 +73,7 @@ IrqCallback_t IrqCallbackList[HAL_NUM_IRQ_LINES] = {NULL, NULL};
 ******************************************************************************/
 void fiqHandler(void)
 {
-	LOG(__FUNCTION__);
+	//LOG(__FUNCTION__);
   if (NULL != IrqCallbackList[HAL_FIRST_VALID_IRQ])
     IrqCallbackList[HAL_FIRST_VALID_IRQ]();
 }
@@ -83,7 +83,7 @@ void fiqHandler(void)
 ******************************************************************************/
 void irq0Handler(void)
 {
-	LOG(__FUNCTION__);
+	//LOG(__FUNCTION__);
 #if defined(FREE_RTOS)
   portSAVE_CONTEXT();
 #endif
@@ -105,7 +105,7 @@ void irq0Handler(void)
 ******************************************************************************/
 void irq1Handler(void)
 {
-	LOG(__FUNCTION__);
+	//LOG(__FUNCTION__);
 #if defined(FREE_RTOS)
   portSAVE_CONTEXT();
 #endif
@@ -130,7 +130,7 @@ Returns:
 ******************************************************************************/
 void halSetIrqConfig(uint32_t irqNumber, HAL_IrqMode_t irqMode)
 {
-	LOG(__FUNCTION__);
+	//LOG(__FUNCTION__);
   /* Disable the interrupt on the interrupt controller */
   AT91C_BASE_AIC->AIC_IDCR = (1 << irqNumber);
   /* Save the interrupt handler routine pointer and the interrupt priority */
@@ -166,7 +166,7 @@ Returns:
 ******************************************************************************/
 void halClrIrqConfig(uint32_t irqNumber)
 {
-	LOG(__FUNCTION__);
+	//LOG(__FUNCTION__);
   /* Disable the interrupt on the interrupt controller */
   AT91C_BASE_AIC->AIC_IDCR = (1 << irqNumber);
   switch (irqNumber)

@@ -85,7 +85,7 @@ void spi1Handler(void)
   portSAVE_CONTEXT();
 #endif
 
-  dbgu_print_ascii("spi1Handler()\n");
+  //dbgu_print_ascii("spi1Handler()\n");
 
   volatile uint32_t status;
 
@@ -118,7 +118,7 @@ void spi1Handler(void)
 ******************************************************************************/
 void halInitRfSpi(HAL_RfSpiMode_t *SpiMode)
 {
-	dbgu_print_ascii("halInitRfSpi()\n");
+	//dbgu_print_ascii("halInitRfSpi()\n");
 //  /* Configure PIOs for SPI */
 //  AT91C_BASE_PIOA->PIO_ASR = AT91C_PA24_SPI1_MISO | AT91C_PA23_SPI1_MOSI |
 //                             AT91C_PA22_SPI1_SPCK;
@@ -199,6 +199,32 @@ void halInitRfSpi(HAL_RfSpiMode_t *SpiMode)
 
 	    AT91C_BASE_SPI1->SPI_CSR[2] = (AT91C_SPI_NCPHA | (AT91C_SPI_BITS & AT91C_SPI_BITS_8) | (AT91C_SPI_SCBR & (12 << 8)));
 
+	      /* disable all spi interrupt */
+	      AT91C_BASE_SPI1->SPI_IDR = ALL_PERIPHERIAL_INTERRUPT_DISABLE;
+
+	      /* Enable interrupts */
+	      /* Disable the interrupt on the interrupt controller */
+	      AT91C_BASE_AIC->AIC_IDCR = (1 << AT91C_ID_SPI1);
+	      /* Save the interrupt handler routine pointer and the interrupt priority */
+	      AT91C_BASE_AIC->AIC_SVR[AT91C_ID_SPI1] = (uint32_t)spi1Handler;
+	      /* Store the Source Mode Register */
+	      AT91C_BASE_AIC->AIC_SMR[AT91C_ID_SPI1] = AT91C_AIC_SRCTYPE_HIGH_LEVEL | AT91C_AIC_PRIOR_LOWEST;
+	      /* Clear the interrupt on the interrupt controller */
+	      AT91C_BASE_AIC->AIC_ICCR = (1 << AT91C_ID_SPI1);
+	      /* Enable the interrupt on the interrupt controller */
+	      AT91C_BASE_AIC->AIC_IECR = (1 << AT91C_ID_SPI1);
+
+	      if (HAL_SPI_DMA == SpiMode->dmamode)
+	      {
+	        /* enable spi DMA */
+	        AT91C_BASE_SPI1->SPI_PTCR = AT91C_PDC_RXTEN | AT91C_PDC_TXTEN;
+	      }
+	      else
+	      {
+	        /* disable spi DMA */
+	        AT91C_BASE_SPI1->SPI_PTCR = AT91C_PDC_RXTDIS | AT91C_PDC_TXTDIS;
+	      }
+
 	    AT91C_BASE_SPI1->SPI_CR = AT91C_SPI_SPIEN;
 }
 
@@ -209,7 +235,8 @@ void halInitRfSpi(HAL_RfSpiMode_t *SpiMode)
 ******************************************************************************/
 void HAL_InitRfSpi(HAL_RfSpiMode_t *SpiMode)
 {
-  dbgu_print_ascii("HAL_InitRfSpi\n");
+  //dbgu_print_ascii("HAL_InitRfSpi\n");
+	configure_dbgu();
   halInitRfSpi(SpiMode);
 }
 
@@ -220,11 +247,9 @@ void HAL_InitRfSpi(HAL_RfSpiMode_t *SpiMode)
 ******************************************************************************/
 uint32_t HAL_WriteByteRfSpi(uint8_t value)
 {
-  dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
-  //dbgu_print_hex8(value);dbgu_print_ascii("\n");
+  //dbgu_print_ascii("HAL_WriteByteRfSpi");dbgu_print_ascii("\n");
   AT91C_BASE_SPI1->SPI_TDR = (uint32_t)value; // Write data.
   while (!((AT91C_BASE_SPI1->SPI_SR) & AT91C_SPI_RDRF));
-  //dbgu_print_ascii("HAL_WriteByteRfSpi() - exit\n");
   return AT91C_BASE_SPI1->SPI_RDR;
 }
 
@@ -238,7 +263,7 @@ uint32_t HAL_WriteByteRfSpi(uint8_t value)
 ******************************************************************************/
 void HAL_WriteDataRfSpi(uint8_t *data, uint16_t size, void (*callback)())
 {
-	//dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	////dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   tx_rf_callback = callback;
   AT91C_BASE_SPI1->SPI_TPR = (uint32_t)data;
   AT91C_BASE_SPI1->SPI_TCR = size;
@@ -255,7 +280,7 @@ void HAL_WriteDataRfSpi(uint8_t *data, uint16_t size, void (*callback)())
 ******************************************************************************/
 void HAL_EnableReadDataRfSpi(uint8_t *data, uint16_t size, void (*callback)())
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   rx_rf_callback = callback;
   AT91C_BASE_SPI1->SPI_RPR = (uint32_t)data;
   AT91C_BASE_SPI1->SPI_RCR = size;
@@ -268,7 +293,7 @@ void HAL_EnableReadDataRfSpi(uint8_t *data, uint16_t size, void (*callback)())
 void halRfTxCompleteHandler(void)
 {
 	//configure_dbgu();
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
    if (NULL != tx_rf_callback)
      tx_rf_callback();
 }
@@ -279,7 +304,7 @@ void halRfTxCompleteHandler(void)
 void halRfRxCompleteHandler(void)
 {
 	//configure_dbgu();
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
    if (NULL != rx_rf_callback)
      rx_rf_callback();
 }
@@ -331,7 +356,7 @@ void spi0Handler(void)
 ******************************************************************************/
 void halInitMemSpi(HAL_SpiDescriptor_t *descrp)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   /* Configure PIOs for SPI */
   AT91C_BASE_PIOA->PIO_BSR = AT91C_PA17_SPI0_MOSI | AT91C_PA16_SPI0_MISO |
                              AT91C_PA18_SPI0_SPCK;

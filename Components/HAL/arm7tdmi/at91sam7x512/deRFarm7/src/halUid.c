@@ -66,7 +66,6 @@ void halReadUid(void)
   }
 
   GPIO_SPI_CS_set();
-  dbgu_print_hex8(halUid.uid);
 }
 
 /******************************************************************************

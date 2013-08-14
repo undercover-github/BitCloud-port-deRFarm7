@@ -35,7 +35,7 @@
 // serial clock baud rate
 // speed - spi frequency in Hz
 #if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
-  #define SPI_FREQUENCY  6000000ul
+  #define SPI_FREQUENCY  6000000ul //was 6000000
 #elif defined(PLATFORM_ZIGBIT_LAN) || defined(PLATFORM_ZIGBIT_TURBO)
   #ifdef RF
     #define SPI_FREQUENCY  8000000ul
@@ -49,7 +49,7 @@
 #define NPCS_TO_SPCK_RF230  0.00000018
 // Delay Between Consecutive Transfers DLYBC = Delay * Master Clock / 32
 // rf230 250 ns (t5 in manual)
-#define DELAY_BETWEEN_CONSECUTIVE_TRANSFERS_RF230  0.00000025
+#define DELAY_BETWEEN_CONSECUTIVE_TRANSFERS_RF230 0.00000050 //0.00000025
 
 /******************************************************************************
                    Types section

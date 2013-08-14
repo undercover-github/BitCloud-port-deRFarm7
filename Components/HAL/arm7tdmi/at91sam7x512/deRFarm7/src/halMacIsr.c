@@ -70,7 +70,7 @@ void phyDispatcheRfInterrupt(void);
 ******************************************************************************/
 void HAL_InitMacIsr(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   __rtimer.mode = HAL_RTIMER_STOPPED_MODE;
   HAL_InitRfIrq();
 }
@@ -83,8 +83,8 @@ void HAL_InitMacIsr(void)
 ******************************************************************************/
 bool HAL_StartRtimer(HAL_RTimerMode_t mode, uint16_t period)
 {
-	LOG(__FUNCTION__);
-	  LOG("\n");
+	//LOG(__FUNCTION__);
+	  //LOG("\n");
   if (HAL_RTIMER_STOPPED_MODE != __rtimer.mode)
     return false;
 
@@ -109,8 +109,8 @@ bool HAL_StartRtimer(HAL_RTimerMode_t mode, uint16_t period)
 ******************************************************************************/
 void HAL_StopRtimer(void)
 {
-	LOG(__FUNCTION__);
-	  LOG("\n");
+	//LOG(__FUNCTION__);
+	  //LOG("\n");
   /* disable interrupt from A compare */
   AT91C_BASE_TC0->TC_IDR = AT91C_TC_CPAS;
   __rtimer.mode = HAL_RTIMER_STOPPED_MODE;
@@ -121,8 +121,8 @@ void HAL_StopRtimer(void)
 ******************************************************************************/
 void halMacTimerHandler(void)
 {
-	LOG(__FUNCTION__);
-	  LOG("\n");
+	//LOG(__FUNCTION__);
+	  //LOG("\n");
   if (HAL_RTIMER_ONE_SHOT_MODE == __rtimer.mode)
   {
     /* disable interrupt from A compare */
@@ -145,8 +145,8 @@ void halMacTimerHandler(void)
 void irqRfHandler(void)
 {
   //configure_dbgu();
-	LOG(__FUNCTION__);
-	  LOG("\n");
+	//LOG(__FUNCTION__);
+	  //LOG("\n");
 #if defined(PLATFORM_deRFarm7) || defined(PLATFORM_CUSTOM_1) || defined(PLATFORM_CUSTOM_2)
   #if defined(FREE_RTOS)
     portSAVE_CONTEXT();

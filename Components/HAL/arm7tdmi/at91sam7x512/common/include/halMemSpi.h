@@ -52,9 +52,10 @@
 #define CS2    2
 #define CS3    3
 
-#define DEFAULT_CS  CS0
+#define DEFAULT_CS  CS2 //was CS0
 
-#define SPI_CHANNEL_1   AT91C_ID_SPI0
+#define SPI_CHANNEL_0   AT91C_ID_SPI0
+#define SPI_CHANNEL_1   AT91C_ID_SPI1
 
 /******************************************************************************
                    Types section

@@ -47,8 +47,8 @@ extern IrqCallback_t IrqCallbackList[HAL_NUM_IRQ_LINES];
 ******************************************************************************/
 int HAL_RegisterIrq(HAL_IrqNumber_t irqNumber, HAL_IrqMode_t irqMode, void (*f)(void))
 {
-  LOG(__FUNCTION__);
-  LOG("\n");
+  //LOG(__FUNCTION__);
+  //LOG("\n");
   uint32_t tempNumber;
 
   // undefined irq
@@ -111,8 +111,8 @@ int HAL_RegisterIrq(HAL_IrqNumber_t irqNumber, HAL_IrqMode_t irqMode, void (*f)(
 ******************************************************************************/
 int HAL_EnableIrq(HAL_IrqNumber_t irqNumber)
 {
-	LOG(__FUNCTION__);
-	  LOG("\n");
+	//LOG(__FUNCTION__);
+	  //LOG("\n");
   // undefined irq
   if ((IRQ_0 != irqNumber) && (IRQ_1 != irqNumber))
     return -1;
@@ -148,8 +148,8 @@ int HAL_EnableIrq(HAL_IrqNumber_t irqNumber)
 ******************************************************************************/
 int HAL_DisableIrq(HAL_IrqNumber_t irqNumber)
 {
-	LOG(__FUNCTION__);
-	  LOG("\n");
+	//LOG(__FUNCTION__);
+	  //LOG("\n");
   // undefined irq
   if ((IRQ_0 != irqNumber) && (IRQ_1 != irqNumber))
     return -1;
@@ -185,8 +185,8 @@ int HAL_DisableIrq(HAL_IrqNumber_t irqNumber)
 ******************************************************************************/
 int HAL_UnregisterIrq(HAL_IrqNumber_t irqNumber)
 {
-	LOG(__FUNCTION__);
-	  LOG("\n");
+	//LOG(__FUNCTION__);
+	  //LOG("\n");
   // undefined irq
   if ((IRQ_0 != irqNumber) && (IRQ_1 != irqNumber))
     return -1;

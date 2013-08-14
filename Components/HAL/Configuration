@@ -17,8 +17,8 @@
 #  DEBUG - system asserts, logging and debug info are switched on
 #  RELEASE - system asserts, logging and debug info are switched off
 #-------------------------------------------------------------------------------
-#BUILD_CONFIGURATION = RELEASE
-BUILD_CONFIGURATION = DEBUG
+BUILD_CONFIGURATION = RELEASE
+#BUILD_CONFIGURATION = DEBUG
 
 #-------------------------------------------------------------------------------
 # Build configuration:

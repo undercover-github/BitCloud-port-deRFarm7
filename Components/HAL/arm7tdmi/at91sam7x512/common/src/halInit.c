@@ -79,32 +79,32 @@ Performs start up HAL initialization.
 void HAL_Init(void)
 {
   //configure_dbgu();
-  dbgu_print_ascii("HAL_Init() - entry\n");
+  ////dbgu_print_ascii("HAL_Init() - entry\n");
   // start timer 0
   
   //HAL_OpenDbgu();
   
   //HAL_SendDbguMessage("HAL_Init:: ");
-  dbgu_print_ascii("HAL_Init()::AppClock\n");
+  ////dbgu_print_ascii("HAL_Init()::AppClock\n");
   halStartAppClock();
   // init spi0
-  dbgu_print_ascii("HAL_Init()::RfSpi\n");
+  ////dbgu_print_ascii("HAL_Init()::RfSpi\n");
   HAL_InitRfSpiMode();
   // Reads unique ID
-  dbgu_print_ascii("HAL_Init()::ReadUid - entry\n");
+  ////dbgu_print_ascii("HAL_Init()::ReadUid - entry\n");
   halReadUid();
-  dbgu_print_ascii("HAL_Init()::ReadUid - exit\n");
+  ////dbgu_print_ascii("HAL_Init()::ReadUid - exit\n");
 #if defined(HAL_USE_WDT)
   #if defined(FREE_RTOS)
     // wdt start, handler is calling freeRTOS
-    dbgu_print_ascii("HAL_Init()::startWdt\n");
+    ////dbgu_print_ascii("HAL_Init()::startWdt\n");
     HAL_StartWdt(WDT_INTERVAL_1000);
   #else
     // wdt initialization
-    dbgu_print_ascii("HAL_Init()::initSystemDevice\n");
+    ////dbgu_print_ascii("HAL_Init()::initSystemDevice\n");
     halInitSystemDevice();
   #endif
 #endif // #if defined(HAL_USE_WDT)
-    dbgu_print_ascii("HAL_Init() - exit\n");
+    ////dbgu_print_ascii("HAL_Init() - exit\n");
 }
 // eof halInit.c

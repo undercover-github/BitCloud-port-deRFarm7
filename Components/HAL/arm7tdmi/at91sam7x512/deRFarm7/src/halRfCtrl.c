@@ -83,7 +83,7 @@ void phyTxAntennaDiversity(void);
 ******************************************************************************/
 void HAL_Delay(uint8_t us)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   halDelayUs(us);
 }
 
@@ -92,7 +92,7 @@ void HAL_Delay(uint8_t us)
 ******************************************************************************/
 void HAL_ClearRfIrqFlag(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   /* Clear the interrupt on the interrupt controller */
   AT91C_BASE_AIC->AIC_ICCR = (1ul << RF_ID_IRQ);
 }
@@ -102,7 +102,7 @@ void HAL_ClearRfIrqFlag(void)
 ******************************************************************************/
 void HAL_EnableRfIrq(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   /* Enable the interrupt on the interrupt controller */
   AT91C_BASE_AIC->AIC_IECR = (1ul << RF_ID_IRQ);
 }
@@ -112,7 +112,7 @@ void HAL_EnableRfIrq(void)
 ******************************************************************************/
 uint8_t HAL_DisableRfIrq(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   /* Disable the interrupt on the interrupt controller */
   if (AT91C_BASE_AIC->AIC_IMR & (1ul << RF_ID_IRQ))
   { /* interrupt was enabled */
@@ -129,7 +129,7 @@ uint8_t HAL_DisableRfIrq(void)
 ******************************************************************************/
 void HAL_SetRfSlpTr(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   GPIO_RF_SLP_TR_set();
 }
 
@@ -138,7 +138,7 @@ void HAL_SetRfSlpTr(void)
 ******************************************************************************/
 void HAL_ClearRfSlpTr(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   GPIO_RF_SLP_TR_clr();
 }
 
@@ -147,7 +147,7 @@ void HAL_ClearRfSlpTr(void)
 ******************************************************************************/
 void HAL_MakeInRfSlpTr(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   GPIO_RF_SLP_TR_make_in();
 }
 
@@ -156,7 +156,7 @@ void HAL_MakeInRfSlpTr(void)
 ******************************************************************************/
 void HAL_MakeOutRfSlpTr(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   GPIO_RF_SLP_TR_make_out();
 }
 
@@ -165,7 +165,7 @@ void HAL_MakeOutRfSlpTr(void)
 ******************************************************************************/
 void HAL_SetRfRst(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   GPIO_RF_RST_set();
 }
 
@@ -174,7 +174,7 @@ void HAL_SetRfRst(void)
 ******************************************************************************/
 void HAL_ClearRfRst(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   GPIO_RF_RST_clr();
 }
 
@@ -183,7 +183,7 @@ void HAL_ClearRfRst(void)
 ******************************************************************************/
 void HAL_DeselectRfSpi(void)
 {
-	//dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	////dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   GPIO_SPI_CS_set();
 }
 
@@ -192,7 +192,7 @@ void HAL_DeselectRfSpi(void)
 ******************************************************************************/
 void HAL_SelectRfSpi(void)
 {
-	//dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	////dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   GPIO_SPI_CS_clr();
 }
 
@@ -201,10 +201,10 @@ void HAL_SelectRfSpi(void)
 ******************************************************************************/
 void HAL_InitRfPins(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
 
-  PERIPHERAL_CLOCK_ENABLE(AT91C_ID_PIOA);
-  PERIPHERAL_CLOCK_ENABLE(AT91C_ID_PIOB);
+  //PERIPHERAL_CLOCK_ENABLE(AT91C_ID_PIOA);
+  //PERIPHERAL_CLOCK_ENABLE(AT91C_ID_PIOB);
 
   GPIO_RF_SLP_TR_clr();
   GPIO_RF_SLP_TR_make_out();
@@ -222,7 +222,7 @@ void HAL_InitRfPins(void)
 ******************************************************************************/
 void HAL_InitRfIrq(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   /* enable pio peripheral functions */
   AT91C_BASE_PIOA->PIO_ASR = IRQ_RF_NPC;
   AT91C_BASE_PIOA->PIO_PDR = IRQ_RF_NPC;
@@ -248,7 +248,7 @@ void HAL_InitRfIrq(void)
 ******************************************************************************/
 HalSysFreq_t HAL_GetRfFreq(void)
 {
-  return HAL_FREQ_1MHZ;
+  return HAL_FREQ_1MHZ; //ORIGIN 1Mhz
 }
 
 /******************************************************************************
@@ -256,11 +256,12 @@ HalSysFreq_t HAL_GetRfFreq(void)
 ******************************************************************************/
 void HAL_InitRfSpiMode(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   HAL_RfSpiMode_t mode;
 
   mode.csmode = HAL_SPI_SOFTWARE_CS;
   mode.dmamode = HAL_SPI_BYTE;
+  //mode.dmamode = HAL_SPI_DMA;
   HAL_InitRfSpi(&mode);
 }
 
@@ -269,7 +270,7 @@ void HAL_InitRfSpiMode(void)
 ******************************************************************************/
 void HAL_EnableRxTxSwitcher(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   #ifdef _HAL_RF_RX_TX_INDICATOR_
     phyRxTxSwitcherOn();
   #endif //_HAL_RF_RX_TX_INDICATOR_
@@ -280,7 +281,7 @@ void HAL_EnableRxTxSwitcher(void)
 ******************************************************************************/
 void HAL_InitAntennaDiversity(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   #ifdef _HAL_ANT_DIVERSITY_
     phyAntennaDiversityInit();
   #endif //_HAL_ANT_DIVERSITY_
@@ -291,7 +292,7 @@ void HAL_InitAntennaDiversity(void)
 ******************************************************************************/
 void HAL_EnableRxAntennaDiversity(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   #ifdef _HAL_ANT_DIVERSITY_
     phyRxAntennaDiversity();
   #endif //_HAL_ANT_DIVERSITY_
@@ -302,7 +303,7 @@ void HAL_EnableRxAntennaDiversity(void)
 ******************************************************************************/
 void HAL_EnableTxAntennaDiversity(void)
 {
-	dbgu_print_ascii(__FUNCTION__);dbgu_print_ascii("\n");
+	//dbgu_print_ascii(__FUNCTION__);//dbgu_print_ascii("\n");
   #ifdef _HAL_ANT_DIVERSITY_
     phyTxAntennaDiversity();
   #endif //_HAL_ANT_DIVERSITY_

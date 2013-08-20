@@ -129,6 +129,18 @@ void BSP_OffLed(uint8_t id)
     case LED_FOURTH:
           halOffLed3();
          break;
+    case LED_FIFTH:
+		 halOffLed4();
+		 break;
+	case LED_SIXTH:
+		  halOffLed5();
+		 break;
+	case LED_SEVENTH:
+		  halOffLed6();
+		 break;
+	case LED_EIGHTH:
+		  halOffLed7();
+		 break;
   }
 }
 
@@ -153,6 +165,18 @@ void BSP_ToggleLed(uint8_t id)
     case LED_FOURTH:
           halToggleLed3();
          break;
+    case LED_FIFTH:
+		 halToggleLed4();
+		 break;
+	case LED_SIXTH:
+		  halToggleLed5();
+		 break;
+	case LED_SEVENTH:
+		  halToggleLed6();
+		 break;
+	case LED_EIGHTH:
+		  halToggleLed7();
+		 break;
   }
 }
 
